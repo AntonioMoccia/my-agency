@@ -1,37 +1,43 @@
-# Checklist di audit di un progetto esistente
+# Audit checklist for an existing project
 
-Compilare `contesto/audit.md` con queste tre colonne. Esito: `ok`, `da migliorare`, `critico`, `non applicabile`.
+Fill in `context/audit.md` with these three columns. Outcome: `ok`, `needs work`,
+`critical`, `not applicable`.
 
-| Voce | Come verificarla | Esito |
+| Item | How to check it | Outcome |
 |---|---|---|
-| **Stack e versioni** | Leggere `package.json` (o equivalente), file di lock, runtime richiesto. Annotare framework e versione, e se è ancora supportata | |
-| **Dipendenze obsolete** | `npm outdated` (o `pip list --outdated`, `composer outdated`). Contare quante major indietro sono le principali | |
-| **Dipendenze vulnerabili** | `npm audit` (o equivalente). Annotare quante vulnerabilità critiche e alte | |
-| **Struttura del codice** | Leggere l'albero delle cartelle: separazione delle responsabilità, duplicazioni, file enormi, codice morto, componenti riusabili | |
-| **Presenza di test** | Cercare `test`, `spec`, `__tests__`, configurazioni di test. Eseguirli: passano? Che copertura dichiarano? | |
-| **Build** | Eseguire la build da pulito: funziona? Quanto dura? Ci sono warning? | |
-| **Lighthouse** | Eseguire Lighthouse sulla produzione, desktop e mobile: performance, accessibilità, SEO, best practice (0–100) | |
-| **Core Web Vitals** | LCP (obiettivo < 2,5 s), INP (< 200 ms), CLS (< 0,1). Dati reali se disponibili, altrimenti da laboratorio | |
-| **Peso delle pagine** | Peso totale e numero di richieste della home; immagini non ottimizzate; font caricati | |
-| **SEO** | `title` e `description` unici per pagina, un solo `h1`, URL leggibili, `sitemap.xml`, `robots.txt`, canonical, dati strutturati, pagine indicizzate | |
-| **Accessibilità** | Contrasto (AA: 4,5:1), navigazione da tastiera e focus visibile, `alt` sulle immagini, label sui form, landmark e ordine dei titoli | |
-| **Sicurezza: segreti** | Cercare chiavi e password nel codice e nella storia Git (`git log -p` sui file di configurazione, `.env` committati) | |
-| **Sicurezza: header** | Verificare HTTPS e redirect, HSTS, CSP, `X-Content-Type-Options`, `Referrer-Policy`, cookie con `Secure` e `HttpOnly` | |
-| **Form e input** | Validazione lato server, protezione anti-spam, upload limitati, messaggi di errore che non espongono dettagli interni | |
-| **Privacy e cookie** | Banner di consenso funzionante, script di tracciamento bloccati prima del consenso, privacy e cookie policy presenti, dati societari nel footer | |
-| **Hosting e costi attuali** | Dove è ospitato, che piano, chi lo paga, a nome di chi sono dominio e account, quando scadono | |
-| **Backup e ripristino** | Esiste un backup? Di cosa (codice, database, media)? È stato mai provato un ripristino? | |
-| **Monitoraggio** | Error tracking, uptime, log accessibili | |
-| **Contenuti** | Quante pagine, chi li aggiorna, c'è un CMS, contenuti duplicati o obsoleti | |
-| **Integrazioni** | Servizi esterni collegati (pagamenti, email, CRM, analytics) e se funzionano ancora | |
+| **Stack and versions** | Read `package.json` (or equivalent), lock files, required runtime. Note framework and version, and whether it is still supported | |
+| **Outdated dependencies** | `npm outdated` (or `pip list --outdated`, `composer outdated`). Count how many majors behind the main ones are | |
+| **Vulnerable dependencies** | `npm audit` (or equivalent). Note how many critical and high vulnerabilities | |
+| **Code structure** | Read the folder tree: separation of concerns, duplication, huge files, dead code, reusable components | |
+| **Tests present** | Look for `test`, `spec`, `__tests__`, test configuration. Run them: do they pass? What coverage do they claim? | |
+| **Build** | Run a clean build: does it work? How long does it take? Any warnings? | |
+| **Lighthouse** | Run Lighthouse against production, desktop and mobile: performance, accessibility, SEO, best practices (0–100) | |
+| **Core Web Vitals** | LCP (target < 2.5 s), INP (< 200 ms), CLS (< 0.1). Field data if available, otherwise lab | |
+| **Page weight** | Total weight and number of requests on the home page; unoptimised images; fonts loaded | |
+| **SEO** | Unique `title` and `description` per page, a single `h1`, readable URLs, `sitemap.xml`, `robots.txt`, canonical, structured data, indexed pages | |
+| **Accessibility** | Contrast (AA: 4.5:1), keyboard navigation and visible focus, `alt` on images, labels on forms, landmarks and heading order | |
+| **Security: secrets** | Look for keys and passwords in the code and in the Git history (`git log -p` on config files, committed `.env`) | |
+| **Security: headers** | Check HTTPS and redirects, HSTS, CSP, `X-Content-Type-Options`, `Referrer-Policy`, cookies with `Secure` and `HttpOnly` | |
+| **Forms and input** | Server-side validation, anti-spam protection, upload limits, error messages that do not leak internals | |
+| **Privacy and cookies** | Working consent banner, tracking scripts blocked before consent, privacy and cookie policy present, company details in the footer | |
+| **Hosting and current costs** | Where it is hosted, which plan, who pays, whose name the domain and accounts are in, when they expire | |
+| **Backup and restore** | Is there a backup? Of what (code, database, media)? Has a restore ever been tested? | |
+| **Monitoring** | Error tracking, uptime, accessible logs | |
+| **Content** | How many pages, who updates them, is there a CMS, duplicate or stale content | |
+| **Integrations** | Connected external services (payments, email, CRM, analytics) and whether they still work | |
 
-## Chiusura dell'audit
-1. **I 5 problemi più gravi**, in ordine di impatto sull'obiettivo del cliente, con una riga sulla conseguenza concreta.
-2. **Cosa funziona e va conservato**: è importante quanto l'elenco dei problemi.
-3. **Interventi obbligatori** (sicurezza, privacy, accessibilità di legge) separati da quelli **opzionali**.
-4. **Stima dello sforzo** per ogni problema: basso, medio, alto. Nessuna stima in giornate: quella sta nel contratto.
+## Closing the audit
+1. **The 5 most serious problems**, in order of impact on the client's goal, each with one
+   line on its concrete consequence.
+2. **What works and must be preserved**: as important as the list of problems.
+3. **Mandatory work** (security, privacy, legally required accessibility) separated from
+   the **optional** work.
+4. **Effort estimate** per problem: low, medium, high. No estimate in days: that belongs
+   in the contract.
 
-## Note
-- Verificare **sulla produzione** per Lighthouse, header e SEO; **sul codice** per dipendenze, struttura e test.
-- Se un controllo non si può eseguire (nessun accesso, build rotta), scrivere `non verificabile` e il perché: non lasciare la riga vuota.
-- Non modificare niente durante l'audit: è una fase di sola lettura.
+## Notes
+- Check **on production** for Lighthouse, headers and SEO; **on the code** for
+  dependencies, structure and tests.
+- If a check cannot be run (no access, broken build), write `cannot verify` and why: never
+  leave the row empty.
+- Change nothing during the audit: it is a read-only phase.

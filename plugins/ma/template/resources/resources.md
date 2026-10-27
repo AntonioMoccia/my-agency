@@ -1,8 +1,8 @@
 # Resources
 
-Compilata da `/ma:onboarding-sito`. Aggiorna **Stato** quando inserisci un file.
+Filled in by `/ma:design`. Update **Status** when you add a file.
 
-Stati: Mancante · Presente · Generata · Da approvare
+Statuses: Missing · Present · Generated · To approve
 
-| Risorsa | Cartella | Pagina | Stato | Fonte | Note |
+| Resource | Folder | Page | Status | Source | Notes |
 |---|---|---|---|---|---|

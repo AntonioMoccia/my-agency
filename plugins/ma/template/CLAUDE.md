@@ -1,9 +1,12 @@
-# Istruzioni per Claude
+# Instructions for Claude
 
-Progetto creato con il plugin `ma` (My Agency).
+Project created with the `ma` plugin (My Agency).
 
-1. Prima di ogni lavoro leggi `contesto/` (stato, discovery, stile, decisioni), `onboarding.md` e `resources/resources.md`.
-2. Se `contesto/stato.md` manca o l'onboarding non è compilato, avvia `/ma:progetto`.
-3. Non iniziare il codice in `sito/` finché il design in `design/` non è approvato.
-4. Ogni risorsa generata va salvata nella sua cartella di `resources/` (o `design/`) e segnata "Generata" in `resources.md`.
-5. Mai credenziali nei file: usa le variabili d'ambiente.
+1. Before any work, read `context/` (state, discovery, style, decisions, inspiration),
+   `onboarding.md` and `resources/resources.md`.
+2. If `context/state.md` is missing, or the onboarding is not filled in, run `/ma:project`.
+3. Reply and write deliverables in the **project language** recorded in `context/state.md`.
+4. Do not start the code in `site/` until the design in `design/` is approved.
+5. Every generated resource goes into its folder under `resources/` (or `design/`) and is
+   marked "Generated" in `resources.md`.
+6. Never put credentials in a file: use environment variables.

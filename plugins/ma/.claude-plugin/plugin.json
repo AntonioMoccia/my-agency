@@ -1,18 +1,21 @@
 {
   "name": "ma",
-  "version": "0.3.0",
-  "description": "My Agency — porta un progetto di sito, app o software dall'onboarding del cliente al design approvato, al contratto e allo sviluppo.",
+  "version": "0.4.0",
+  "description": "My Agency - takes a website, app or software project from client onboarding to approved design, contract and development.",
   "author": {
     "name": "Antonio Moccia"
   },
   "keywords": [
-    "agenzia",
-    "sito web",
+    "agency",
+    "website",
     "onboarding",
     "discovery",
+    "questionnaire",
     "design",
-    "costi",
-    "contratto",
+    "awwwards",
+    "inspiration",
+    "costs",
+    "contract",
     "refactoring"
   ]
 }

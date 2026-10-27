@@ -1,5 +1,6 @@
 # Design
 
-- `stile.md`: palette, tipografia, spaziature, animazioni chiave.
-- Mockup: link al design (Claude Design o Figma) e screenshot delle pagine approvate.
-- Approvato il: —
+- `style.md`: palette, typography, spacing, key animations.
+- Mockups: link to the design (Claude Design or Figma) and screenshots of the approved pages.
+- References used: see `context/inspiration.md`.
+- Approved on: —

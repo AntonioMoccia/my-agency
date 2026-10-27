@@ -1,19 +1,21 @@
 # Onboarding
 
-Compilato da `/ma:onboarding-sito`.
+Filled in by `/ma:onboarding`.
 
-| Voce | Scelta |
+| Item | Choice |
 |---|---|
-| Progetto / cliente | |
-| Tipologia | |
-| Tecnologie | |
-| Strada risorse | Le inserisco io / Le genera Claude / Mista |
+| Project / client | |
+| Mode | project / pitch / refactoring |
+| Language | |
+| Typology | |
+| Technologies | |
+| Resources route | I provide them / Claude generates them / Mixed |
 
-## Struttura
-| Pagina / schermata | Sezioni |
+## Structure
+| Page / screen | Sections |
 |---|---|
 
-## Stile
-- Parole chiave:
-- Riferimenti (link o file in `resources/riferimenti/`):
-- Cosa evitare:
+## Style
+- Keywords:
+- References (links or files in `resources/references/`):
+- What to avoid:

@@ -3,12 +3,12 @@
   "owner": {
     "name": "Antonio Moccia"
   },
-  "description": "Plugin di My Agency per Claude Code",
+  "description": "My Agency's Claude Code plugin marketplace",
   "plugins": [
     {
       "name": "ma",
       "source": "./plugins/ma",
-      "description": "My Agency — onboarding sito/app e generazione risorse e design"
+      "description": "My Agency - client onboarding, questionnaire, design with automatic references, costs, contract and refactoring"
     }
   ]
 }

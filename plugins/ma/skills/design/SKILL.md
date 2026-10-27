@@ -1,69 +1,108 @@
 ---
 name: design
-description: Genera 2-3 direzioni di design diverse (palette, tipografia, griglia, animazioni, home desktop e mobile), fa scegliere o combinare le proposte, itera fino all'approvazione e tiene aggiornata la tabella resources con testi e immagini mancanti. Da usare quando l'utente dice "fammi il design", "genera le proposte", "facciamo i mockup", "genera le risorse", "mi piace la A ma con la tipografia della B".
+description: Generates 2-3 genuinely different design directions (palette, typography, grid, animation, desktop and mobile home), gathering fresh Awwwards references first, then has the user pick or combine them, iterates until approval and keeps the resources table up to date with missing copy and images. Use when the user says "do the design", "generate the proposals", "let's do the mockups", "generate the resources", "I like A but with B's typography", "fammi il design", "genera le proposte", "facciamo i mockup".
 ---
 
-# Design — proposte, selezione, iterazione
+# Design — proposals, selection, iteration
 
-Leggere prima `${CLAUDE_PLUGIN_ROOT}/riferimenti/convenzioni.md`, `${CLAUDE_PLUGIN_ROOT}/riferimenti/stato.md`, `${CLAUDE_PLUGIN_ROOT}/riferimenti/git.md` e `${CLAUDE_PLUGIN_ROOT}/riferimenti/memoria.md`. La checklist di qualità è in `references/proposte.md`: applicarla a ogni proposta prima di mostrarla.
+Read first `${CLAUDE_PLUGIN_ROOT}/references/conventions.md`,
+`${CLAUDE_PLUGIN_ROOT}/references/state.md`, `${CLAUDE_PLUGIN_ROOT}/references/git.md`,
+`${CLAUDE_PLUGIN_ROOT}/references/memory.md` and
+`${CLAUDE_PLUGIN_ROOT}/references/inspiration.md`. The quality checklist is in
+`references/proposals.md`: apply it to every proposal before showing it.
 
-## Passo 0 — Prerequisiti
-Servono `contesto/discovery.md` e `contesto/stile.md`. Se mancano, eseguire prima `onboarding` o `stile`.
+## Step 0 — Prerequisites
+`context/discovery.md` and `context/style.md` are required. If they are missing, run
+`onboarding` or `style` first.
 
-In modalità **Progetto**, se in `contesto/stato.md` la fase `contratto` non è `completata`, avvisare in una riga ("Il contratto non è ancora chiuso: il design è la parte più costosa") e chiedere conferma prima di procedere.
+In **project** mode, if the `contract` phase in `context/state.md` is not `done`, warn
+in one line ("The contract is not closed yet: design is the most expensive part") and
+ask for confirmation before proceeding.
 
-## Passo 1 — Proposte
-Generare **2–3 direzioni realmente diverse**: non tre varianti della stessa idea, ma tre risposte diverse al briefing. In modalità **Pitch**, una sola proposta leggera, solo l'hero.
+## Step 1 — References before proposals
+Never start from a blank page. Follow
+`${CLAUDE_PLUGIN_ROOT}/references/inspiration.md`:
 
-Ogni proposta contiene:
+- `context/inspiration.md` **missing**: gather the references now (Awwwards first) and
+  write it.
+- `context/inspiration.md` **present and older than 30 days**, or a new iteration after
+  a rejected round: refresh it with one new query, adding rows, deleting none.
+- `context/inspiration.md` **present and fresh**: use it as it is, and say so in one line.
 
-| Voce | Dettaglio |
+Say in one line how many references are in play and the principles taken from them.
+
+## Step 2 — Proposals
+Generate **2–3 genuinely different directions**: not three variants of one idea, but
+three different answers to the brief. In **pitch** mode, a single light proposal, hero
+section only.
+
+Every proposal contains:
+
+| Item | Detail |
 |---|---|
-| Nome | Una parola che la identifichi |
-| Idea | Una frase: su cosa punta e perché funziona per questo cliente |
-| Palette | Hex con il ruolo di ogni colore (sfondo, testo, primario, accento, bordi, stati) |
-| Tipografia | Coppia di font **open source** (Google Fonts o simili), con scala e pesi |
-| Griglia | Colonne, gutter, larghezza massima, ritmo verticale |
-| Animazioni | 3–5 animazioni chiave, ognuna col **fallback senza animazione** (`prefers-reduced-motion`) |
-| Home | Desktop **e** mobile |
+| Name | One word that identifies it |
+| Idea | One sentence: what it bets on and why it works for this client |
+| References | 1–3 rows from `context/inspiration.md` and the principle taken from each |
+| Palette | Hex with the role of every colour (background, text, primary, accent, borders, states) |
+| Typography | A pair of **open source** fonts (Google Fonts or similar), with scale and weights |
+| Grid | Columns, gutter, max width, vertical rhythm |
+| Animation | 3–5 key animations, each with its **no-animation fallback** (`prefers-reduced-motion`) |
+| Home | Desktop **and** mobile |
 
-## Passo 2 — Dove produrre il design
-In quest'ordine, usando il primo disponibile:
-1. **artifact type Design**, se disponibile;
-2. **Figma**, se collegato;
-3. **pagina HTML statica** in `design/proposte/vN/<nome-proposta>/index.html`.
+Two proposals must not cite the same principle from the same reference: if they do, one
+of them is not a different direction.
 
-Dire in una riga quale strada è stata usata.
+## Step 3 — Where to produce the design
+In this order, using the first one available:
+1. **Design artifact type**, if available;
+2. **Figma**, if connected;
+3. **static HTML page** in `design/proposals/vN/<proposal-name>/index.html`.
 
-Salvare sempre in `design/proposte/vN/README.md` la descrizione di ogni proposta (la tabella del passo 1) e il link o il percorso del design.
+Say in one line which route was used.
 
-## Passo 3 — Selezione
-Chiedere, in un'unica domanda:
-- quale proposta tenere, oppure
-- quali proposte, oppure
-- **quali parti di ognuna** (es. "palette della A, tipografia della B, hero della C");
+Always save in `design/proposals/vN/README.md` the description of every proposal (the
+table from step 2) and the link or path to the design.
 
-e sempre **il motivo**. Registrare tutto in `contesto/decisioni.md`: data, fase `design`, decisione, motivo.
+## Step 4 — Selection
+Ask, in a single question:
+- which proposal to keep, or
+- which proposals, or
+- **which parts of each** (e.g. "A's palette, B's typography, C's hero");
 
-## Passo 4 — Iterazione
-Generare `vN+1` come **sintesi delle scelte**, non come nuovo giro di proposte. Ripetere il ciclo proposte → selezione finché l'utente approva. Ogni iterazione chiude con il commit `ma: design vN`.
+and always **the reason**. Record everything in `context/decisions.md`: date, phase
+`design`, decision, reason.
 
-## Passo 5 — Risorse
-Compilare e aggiornare `resources/resources.md` con una riga per ogni risorsa che il design richiede davvero. Stati: `Mancante`, `Presente`, `Generata`, `Da approvare`.
-- Generare i **testi** realistici per ogni sezione, nel tono delle parole chiave: **mai lorem ipsum**. Stato `Da approvare`.
-- Per ogni **immagine mancante** scrivere nelle note soggetto, inquadratura e formato, così l'utente può generarla o fotografarla. Se è disponibile un generatore di immagini, usarlo e segnare `Generata`.
-- Non sovrascrivere le risorse con stato `Presente`.
+## Step 5 — Iteration
+Generate `vN+1` as a **synthesis of the choices**, not as a new round of proposals.
+Repeat proposals → selection until the user approves. Every iteration closes with the
+commit `ma: design vN`.
 
-## Passo 6 — Approvazione
-Quando l'utente approva:
-1. scrivere "Design approvato il AAAA-MM-GG" in `contesto/stato.md` e in `contesto/decisioni.md`;
-2. fase `design` = `completata`;
-3. riepilogo in tabella: `Presenti | Generate | Da approvare | Ancora mancanti`;
+If a whole round is rejected, refresh the references (step 1) before the next round:
+repeating the same inspiration produces the same proposals.
+
+## Step 6 — Resources
+Fill and keep `resources/resources.md` updated with one row for every resource the
+design genuinely requires. Statuses: `Missing`, `Present`, `Generated`, `To approve`.
+- Generate realistic **copy** for every section, in the tone of the keywords: **never
+  lorem ipsum**. Status `To approve`.
+- For every **missing image**, write subject, framing and format in the notes, so the
+  user can produce or shoot it. If an image generator is available, use it and mark
+  `Generated`.
+- Never overwrite resources with status `Present`.
+- If the copy depends on information only the client has (claims, numbers, names), run
+  the `questionnaire` skill with the `content` set instead of inventing it.
+
+## Step 7 — Approval
+When the user approves:
+1. write "Design approved on YYYY-MM-DD" in `context/state.md` and `context/decisions.md`;
+2. phase `design` = `done`;
+3. summary table: `Present | Generated | To approve | Still missing`;
 4. commit `ma: design vN`;
-5. un solo prossimo passo (di norma lo sviluppo in `sito/`, o la fase successiva della modalità).
+5. a single next step (usually the development in `site/`, or the next phase of the mode).
 
-## Regole
-- Dai riferimenti si prendono **principi**: mai layout identici, loghi, testi o immagini altrui.
-- Niente foto di persone reali prese dal web.
-- Usare solo palette, font e testi decisi nei passi precedenti: nessun colore o font "a sorpresa".
-- Non iniziare il codice in `sito/` prima dell'approvazione.
+## Rules
+- References give **principles**: never identical layouts, logos, copy or images.
+- No photographs of real people taken from the web.
+- Use only the palette, fonts and copy decided in the previous steps: no surprise
+  colours or fonts.
+- Do not start the code in `site/` before approval.

@@ -1,30 +1,40 @@
 # my-agency
 
-Marketplace di plugin per Claude Code di My Agency. Contiene il plugin **`ma`**, che porta un progetto di sito, app o software dall'onboarding del cliente al design approvato, al contratto e allo sviluppo.
+My Agency's Claude Code plugin marketplace. It contains the **`ma`** plugin, which takes a
+website, app or software project from client onboarding through to an approved design, a
+contract and development.
 
-## Installazione
+## Installation
 
 ```bash
 claude plugin marketplace add AntonioMoccia/my-agency
 claude plugin install ma@my-agency
 ```
 
-## Aggiornamento
+## Updating
 
 ```bash
 claude plugin marketplace update my-agency
 ```
 
-## Uso
+## Usage
 
 ```bash
-mkdir progetto-cliente && cd progetto-cliente && claude
+mkdir client-project && cd client-project && claude
 ```
 
-Poi, dentro Claude Code: `/ma:progetto`.
+Then, inside Claude Code: `/ma:project`.
 
-## Plugin
+Full usage guide: **[English](plugins/ma/docs/USAGE.en.md)** ·
+**[Italiano](plugins/ma/docs/USAGE.it.md)**
 
-| Plugin | Cosa fa | Documentazione |
+## Plugins
+
+| Plugin | What it does | Documentation |
 |---|---|---|
-| `ma` | Onboarding, stile, design, costi, contratto e refactoring di progetti web | [plugins/ma/README.md](plugins/ma/README.md) |
+| `ma` | Onboarding, client questionnaire, style with automatic Awwwards references, design, costs, contract and refactoring of web projects | [plugins/ma/README.md](plugins/ma/README.md) |
+
+## Language
+
+The plugin's files are in English. What the plugin writes and says follows the project
+language, asked once during onboarding (default: Italian).

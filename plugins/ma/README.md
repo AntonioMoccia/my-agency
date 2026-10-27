@@ -1,87 +1,107 @@
 # ma — My Agency
 
-Plugin per Claude Code che porta un progetto di sito, app o software dall'onboarding del cliente fino al design approvato, al contratto e allo sviluppo, tenendo traccia di dove si è arrivati.
+A Claude Code plugin that takes a website, app or software project from client onboarding
+through to an approved design, a contract and development, keeping track of where you got to.
 
-## Comandi
+**Usage guide: [English](docs/USAGE.en.md) · [Italiano](docs/USAGE.it.md)**
 
-| Comando | Cosa fa |
+## Commands
+
+| Command | What it does |
 |---|---|
-| `/ma:progetto` | Punto di ingresso: legge lo stato, mostra le fasi e esegue la successiva. Se il progetto non esiste, avvia l'onboarding |
-| `/ma:onboarding` | Setup della cartella (template, cartelle, git, stato) e discovery del cliente in 9 gruppi di domande |
-| `/ma:stato` | Mostra fasi, fase corrente, cosa è in attesa e il prossimo passo. Sola lettura |
-| `/ma:stile` | Raccoglie logo, riferimenti, parole chiave e vincoli in `contesto/stile.md` |
-| `/ma:design` | 2–3 proposte di design diverse, selezione anche per parti, iterazione fino all'approvazione, tabella resources |
-| `/ma:costi` | Propone lo stack e calcola i costi dei servizi verificando i prezzi online, con confronto col budget |
-| `/ma:contratto` | Bozza di contratto da discovery, costi e decisioni, con segnaposto per i dati mancanti |
-| `/ma:refactoring` | Rifacimento di un progetto esistente: acquisizione, audit, specifiche, piano, esecuzione a step |
-| `/ma:skill` | Cerca, valuta, installa, elenca e rimuove skill di terze parti, con registro e checklist di sicurezza |
+| `/ma:project` | Entry point: reads the state, shows the phases and runs the next one. If the project does not exist, starts the onboarding |
+| `/ma:onboarding` | Folder setup (template, folders, git, state) and client discovery in 9 question groups |
+| `/ma:status` | Shows phases, current phase, what is being waited on and the next step. Read-only |
+| `/ma:questionnaire` | Builds a questionnaire for the client, publishes it as a fillable form, collects the answers and merges them into the context |
+| `/ma:style` | Collects logo, references, keywords and constraints into `context/style.md`, and gathers Awwwards references automatically |
+| `/ma:design` | 2–3 different design proposals backed by fresh references, selection down to individual parts, iteration until approval, resources table |
+| `/ma:costs` | Proposes the stack and works out service costs by checking prices online, compared against the budget |
+| `/ma:contract` | Contract draft from discovery, costs and decisions, with placeholders for what is missing |
+| `/ma:refactoring` | Rebuilding an existing project: acquisition, audit, specs, plan, step-by-step execution |
+| `/ma:skill` | Finds, evaluates, installs, lists and removes third-party skills, with a registry and a security checklist |
 
-## Le tre modalità
+## The three modes
 
-La modalità si sceglie in onboarding, sta in `contesto/stato.md` e decide l'ordine delle fasi.
+The mode is chosen during onboarding, lives in `context/state.md` and decides the order
+of the phases.
 
-| Modalità | Quando | Ordine delle fasi |
+| Mode | When | Phase order |
 |---|---|---|
-| **Progetto** | Lavoro completo, cliente acquisito | setup → discovery → stile → costi → contratto → design |
-| **Pitch** | Proposta per acquisire il cliente | setup → discovery → stile → design (1 proposta leggera) → costi → contratto |
-| **Refactoring** | Sito, app o software già esistente | setup → discovery → acquisizione → audit → specifiche → costi → contratto → piano → esecuzione |
+| **Project** | Full engagement, client already won | setup → discovery → style → costs → contract → design |
+| **Pitch** | A proposal to win the client | setup → discovery → style → design (1 light proposal) → costs → contract |
+| **Refactoring** | An existing website, app or software | setup → discovery → acquisition → audit → specs → costs → contract → plan → execution |
 
-In modalità Progetto il design viene **dopo** il contratto: è la parte più costosa e non si regala. In modalità Pitch il design viene prima, ma in versione leggera.
+In Project mode the design comes **after** the contract: it is the most expensive part and
+it is not given away. In Pitch mode the design comes first, but light.
 
-## Avvio rapido
+## Quick start
 
 ```bash
-mkdir progetto-cliente && cd progetto-cliente && claude
+mkdir client-project && cd client-project && claude
 ```
 
-Poi, dentro Claude Code:
+Then, inside Claude Code:
 
 ```
-/ma:progetto
+/ma:project
 ```
 
-Il plugin copia il template, fa `git init`, chiede nome e modalità e parte con la discovery. Ogni fase chiude con un commit `ma: <fase>` nel repo del progetto.
+The plugin copies the template, runs `git init`, asks for name, mode and language, and
+starts the discovery. Every phase closes with a `ma: <phase>` commit in the project repo.
 
-Per riprendere un progetto, dalla sua cartella: `/ma:progetto` per andare avanti, `/ma:stato` per vedere solo a che punto si è.
+To pick a project back up, from its folder: `/ma:project` to move forward, `/ma:status`
+to just see where it stands.
 
-## Struttura di un progetto
+## Language
+
+The plugin's files are in English. What the plugin **writes and says** follows the
+project language, asked once during onboarding and recorded in `context/state.md`
+(default: Italian). Folder and file names stay in English.
+
+## Project structure
 
 ```text
-progetto-cliente/
+client-project/
 ├── CLAUDE.md
-├── contesto/        stato, discovery, stile, decisioni, costi, audit
-├── riferimenti/     logo, brand, screenshot dei riferimenti
-├── resources/       tabella resources + immagini, testi, video
-├── design/          proposte in design/proposte/vN/
-├── contratto/       bozza di contratto
-├── istruzioni/      come configurare i servizi esterni
-└── sito/            il codice
+├── context/         state, discovery, style, inspiration, decisions, costs, questionnaire
+├── references/      logo, brand, screenshots of the references
+├── resources/       the resources table + images, texts, video
+├── design/          proposals in design/proposals/vN/
+├── contract/        contract draft
+├── instructions/    how to configure the external services
+└── site/            the code
 ```
 
-## Memoria del plugin
+## Plugin memory
 
-Il plugin ricorda fra progetti diversi in `registro/`:
-- `registro/preferenze.md` — stack, servizi, design, contratto, modalità, comunicazione;
-- `registro/skills.md` — skill di terze parti valutate: `approvata`, `scartata`, `solo-link`.
+The plugin remembers across projects in `registry/`:
+- `registry/preferences.md` — stack, services, design, contract, mode, communication, language;
+- `registry/skills.md` — evaluated third-party skills: `approved`, `rejected`, `link-only`.
 
-Il plugin installato vive in una cache **in sola lettura**: per scrivere nel registro serve il clone locale del repo `my-agency`. Il percorso si indica una volta sola in `~/.claude/ma.json`:
+The installed plugin lives in a **read-only** cache: writing to the registry requires the
+local clone of the `my-agency` repo. The path is declared once in `~/.claude/ma.json`:
 
 ```json
-{ "repo": "/percorso/assoluto/my-agency" }
+{ "repo": "/absolute/path/my-agency" }
 ```
 
-Le preferenze si salvano **solo** dopo conferma dell'utente, e solo se espresse come regola ("usa sempre…"). I dati del cliente non entrano mai nel registro: restano nel progetto.
+Preferences are saved **only** after the user confirms, and only when stated as a rule
+("always use…"). Client data never enters the registry: it stays in the project.
 
-## Aggiornare il plugin
+## Updating the plugin
 
-Dopo una scrittura nel registro o una modifica al repo:
+After writing to the registry, or changing the repo:
 
 ```bash
 claude plugin marketplace update my-agency
 ```
 
-La scrittura nel registro fa commit e push sul repo del plugin; l'aggiornamento del marketplace rende la modifica visibile al plugin installato.
+Writing to the registry commits and pushes to the plugin repo; updating the marketplace
+makes the change visible to the installed plugin.
 
-## Riferimenti condivisi
+## Shared references
 
-Le regole comuni a tutte le skill stanno in `riferimenti/`: `convenzioni.md` (lingua, modalità, regola d'oro, domande), `stato.md` (formato dello stato), `git.md` (commit per fase), `memoria.md` (lettura e scrittura del registro).
+The rules common to every skill live in `references/`: `conventions.md` (language, modes,
+golden rule, questions), `state.md` (state format), `git.md` (one commit per phase),
+`memory.md` (reading and writing the registry), `inspiration.md` (gathering visual
+references from Awwwards and others).
