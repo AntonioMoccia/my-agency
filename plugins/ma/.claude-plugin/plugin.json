@@ -1,9 +1,18 @@
 {
   "name": "ma",
-  "version": "0.1.0",
-  "description": "My Agency — skill per portare un progetto di sito o app dall'onboarding alle risorse e al design.",
+  "version": "0.3.0",
+  "description": "My Agency — porta un progetto di sito, app o software dall'onboarding del cliente al design approvato, al contratto e allo sviluppo.",
   "author": {
     "name": "Antonio Moccia"
   },
-  "keywords": ["agenzia", "sito web", "onboarding", "design", "awwwards"]
+  "keywords": [
+    "agenzia",
+    "sito web",
+    "onboarding",
+    "discovery",
+    "design",
+    "costi",
+    "contratto",
+    "refactoring"
+  ]
 }
