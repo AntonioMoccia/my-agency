@@ -1,0 +1,14 @@
+{
+  "name": "my-agency",
+  "owner": {
+    "name": "Antonio Moccia"
+  },
+  "description": "Plugin di My Agency per Claude Code",
+  "plugins": [
+    {
+      "name": "ma",
+      "source": "./plugins/ma",
+      "description": "My Agency — onboarding sito/app e generazione risorse e design"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ma",
+  "version": "0.1.0",
+  "description": "My Agency — skill per portare un progetto di sito o app dall'onboarding alle risorse e al design.",
+  "author": {
+    "name": "Antonio Moccia"
+  },
+  "keywords": ["agenzia", "sito web", "onboarding", "design", "awwwards"]
+}
