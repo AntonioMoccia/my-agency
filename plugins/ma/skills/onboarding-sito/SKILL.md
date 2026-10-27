@@ -1,16 +1,22 @@
 ---
 name: onboarding-sito
-description: Avvia l'onboarding di un nuovo sito o app nella cartella di progetto con 4 domande (tipologia, struttura, tecnologie, stile) e compila la tabella resources. Da usare quando l'utente dice "avvia l'onboarding", "nuovo progetto sito", "nuovo cliente", "iniziamo il sito" o apre un progetto clonato dal suo template.
+description: Avvia l'onboarding di un nuovo sito o app - copia il template del progetto se manca, poi 4 domande (tipologia, struttura, tecnologie, stile) e compila la tabella resources. Da usare quando l'utente dice "avvia l'onboarding", "nuovo progetto sito", "nuovo cliente", "iniziamo il sito".
 ---
 
 # Onboarding sito / app
 
 Rispondere sempre in italiano.
 
+## Passo 0 — Preparare la cartella
+Il template del progetto si trova in `${CLAUDE_PLUGIN_ROOT}/template/`.
+
+- **Cartella senza `resources/resources.md`** (vuota o nuova): copiare il contenuto del template nella cartella corrente senza sovrascrivere file esistenti, ad esempio con `cp -Rn "${CLAUDE_PLUGIN_ROOT}/template/." .`. Se `${CLAUDE_PLUGIN_ROOT}` non è disponibile, cercare la cartella `template` del plugin `ma` nella cache dei plugin (`~/.claude/plugins/`). Dire in una riga cosa è stato copiato.
+- **Cartella che ha già `resources/resources.md`**: non copiare nulla, usare la struttura esistente.
+- **Cartella con un progetto diverso** (es. codice, nessun `onboarding.md`): chiedere con una sola domanda se copiare il template qui o in una sottocartella nuova.
+
 ## Regole
-- La cartella e il template sono dell'utente: non creare, rinominare o spostare cartelle e file della struttura.
-- Leggere prima `CLAUDE.md` / `README.md` del progetto per capire dove vanno le risposte dell'onboarding e dove si trova la tabella resources.
-- Se non è chiaro dove scrivere, chiederlo con una sola domanda. Non inventare percorsi.
+- Dopo il Passo 0 non creare, rinominare o spostare cartelle e file della struttura.
+- Le risposte vanno in `onboarding.md`, le risorse in `resources/resources.md`. Se il progetto ha un `CLAUDE.md` che indica percorsi diversi, seguire quelli.
 
 ## Passo 1 — Le 4 domande
 Usare domande a scelta multipla (AskUserQuestion se disponibile), al massimo due per volta, lasciando sempre possibile una risposta libera.
